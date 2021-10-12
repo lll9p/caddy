@@ -11,6 +11,7 @@ RUN xcaddy build \
 FROM caddy
 
 COPY --from=builder /usr/bin/caddy /usr/bin/caddy
+COPY ./entrypoint.sh /entrypoint.sh
 
 RUN apk add --no-cache libcap tzdata \
 	&& cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
@@ -20,3 +21,7 @@ RUN apk add --no-cache libcap tzdata \
     && ln -s /etc/localtime /usr/share/zoneinfo/Asia/Shanghai \
     && setcap 'cap_net_bind_service=+ep' /usr/bin/caddy \
     && apk del libcap
+
+RUN chmod +x /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]

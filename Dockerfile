@@ -4,7 +4,9 @@ FROM caddy:builder AS builder
 RUN xcaddy build \
     --with github.com/mholt/caddy-webdav \
     --with github.com/caddy-dns/dnspod \
-    --with github.com/caddy-dns/cloudflare
+    --with github.com/caddy-dns/cloudflare \
+    --with github.com/caddyserver/format-encoder \
+    --with github.com/mastercactapus/caddy2-proxyprotocol
 
 FROM caddy
 

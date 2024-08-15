@@ -2,4 +2,4 @@
 
 With webdav dnspod cloudflare plugins.
 
-Current caddy version: 2.7.4
+Current caddy version: 2.8.4
